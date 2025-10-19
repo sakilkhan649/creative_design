@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:onboarding/Widgets/CustomDialog.dart';
 
+import '../Controllers/passwoardController.dart';
 import '../Routes/Routespages.dart';
 import '../Widgets/CustomButton.dart';
 import '../Widgets/CustomText.dart';
@@ -12,6 +13,7 @@ class ChangePassPage extends StatelessWidget {
 
   final changepassController = TextEditingController();
   final changepassnewController = TextEditingController();
+  final controller = Get.put(PasswordController());
 
   @override
   Widget build(BuildContext context) {
@@ -79,13 +81,24 @@ class ChangePassPage extends StatelessWidget {
                 maxlines: 1,
               ),
               SizedBox(height: 5),
-              Customtextfield(
-                controller: changepassController,
-                hintText: "Create a password",
-                obscureText: true,
-                color: Colors.black45,
-                fontSize: 12,
-                fontWeight: FontWeight.normal,
+
+              Obx(()=> TextField(
+                decoration: InputDecoration(
+                  hintText: "Create a password",
+                  hintStyle: TextStyle(fontSize: 12,color: Colors.grey),
+                  border: OutlineInputBorder(
+                      borderSide:BorderSide(color: Colors.black,width: 1),
+                      borderRadius: BorderRadius.circular(8)),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.black, width: 1), // যখন ফোকাস করবে তখন রঙ পাল্টাবে
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  suffixIcon: IconButton(onPressed: (){
+                    controller.pass.value=!controller.pass.value;
+                  }, icon: controller.pass.value?Icon(Icons.visibility_off):Icon(Icons.visibility)),
+                ),
+                obscureText: controller.pass.value,
+              ),
               ),
 
               SizedBox(height: 15),
@@ -97,14 +110,25 @@ class ChangePassPage extends StatelessWidget {
                 fontWeight: FontWeight.bold,
                 maxlines: 1,
               ),
-              SizedBox(height: 5),
-              Customtextfield(
-                controller: changepassnewController,
-                hintText: "Re-enter your new password",
-                obscureText: true,
-                color: Colors.black45,
-                fontSize: 12,
-                fontWeight: FontWeight.normal,
+               SizedBox(height: 5),
+
+              Obx(()=> TextField(
+                decoration: InputDecoration(
+                  hintText: "Re-enter your new password",
+                  hintStyle: TextStyle(fontSize: 12,color: Colors.grey),
+                  border: OutlineInputBorder(
+                      borderSide:BorderSide(color: Colors.black,width: 1),
+                      borderRadius: BorderRadius.circular(8)),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.black, width: 1), // যখন ফোকাস করবে তখন রঙ পাল্টাবে
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  suffixIcon: IconButton(onPressed: (){
+                    controller.password.value=!controller.password.value;
+                  }, icon: controller.password.value?Icon(Icons.visibility_off):Icon(Icons.visibility)),
+                ),
+                obscureText: controller.password.value,
+              ),
               ),
 
               SizedBox(height: 30),

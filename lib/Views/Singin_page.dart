@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:onboarding/Controllers/BoxController.dart';
+import 'package:onboarding/Controllers/passwoardController.dart';
 import 'package:onboarding/Routes/Routespages.dart';
 import 'package:onboarding/Widgets/CustomButton.dart';
 import 'package:onboarding/Widgets/CustomText.dart';
@@ -18,6 +20,8 @@ class SigninPage extends StatelessWidget {
 
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final controller = Get.put(PasswordController());
+
 
   @override
   Widget build(BuildContext context) {
@@ -95,14 +99,36 @@ class SigninPage extends StatelessWidget {
                 maxlines: 1,
               ),
               SizedBox(height: 5),
-              Customtextfield(
-                controller: passwordController,
-                hintText: "Enter Password",
-                obscureText: true,
-                color: Colors.black45,
-                fontSize: 12,
-                fontWeight: FontWeight.normal,
+
+              Obx(()=> TextField(
+                  decoration: InputDecoration(
+                    hintText: "Enter Password",
+                    hintStyle: TextStyle(fontSize: 12,color: Colors.grey),
+                    border: OutlineInputBorder(
+                      borderSide:BorderSide(color: Colors.black,width: 1),
+                        borderRadius: BorderRadius.circular(8)),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black, width: 1), // যখন ফোকাস করবে তখন রঙ পাল্টাবে
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    suffixIcon: IconButton(onPressed: (){
+                      controller.pass.value=!controller.pass.value;
+                    }, icon: controller.pass.value?Icon(Icons.visibility_off):Icon(Icons.visibility)),
+                  ),
+                  obscureText: controller.pass.value,
+                ),
               ),
+
+
+              // Customtextfield(
+              //   controller: passwordController,
+              //   hintText: "Enter Password",
+              //   obscureText: true,
+              //   color: Colors.black45,
+              //   seprixIcon: Icon(Icons.security,color: Colors.grey,),
+              //   fontSize: 12,
+              //   fontWeight: FontWeight.normal,
+              // ),
 
               SizedBox(height: 10),
               Align(
