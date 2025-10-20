@@ -1,4 +1,4 @@
-class OnboardingInfo{
+class OnboardingInfo {
   final imageAsesst;
   final title;
   final descripsion;

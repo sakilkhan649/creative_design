@@ -20,7 +20,6 @@ class Customverify extends StatelessWidget {
     this.onChanged,
   });
 
-
   @override
   Widget build(BuildContext context) {
     return Card(

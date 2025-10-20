@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../Routes/Routespages.dart';
 import '../Widgets/CustomButton.dart';
 import '../Widgets/CustomText.dart';
@@ -20,9 +19,12 @@ class AccountVerify extends StatelessWidget {
       appBar: AppBar(
         toolbarHeight: 40,
         backgroundColor: Colors.white,
-        leading: IconButton(onPressed: (){
-          Get.back();
-        }, icon: Image.asset("assets/backicon.png")),
+        leading: IconButton(
+          onPressed: () {
+            Get.back();
+          },
+          icon: Image.asset("assets/backicon.png"),
+        ),
       ),
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -46,7 +48,8 @@ class AccountVerify extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 30),
                       child: Customtext(
-                        text:"Enter your OTP which has been sent to your email",
+                        text:
+                            "Enter your OTP which has been sent to your email",
                         color: Colors.black87,
                         fontSize: 12,
                         fontWeight: FontWeight.normal,
@@ -124,6 +127,7 @@ class AccountVerify extends StatelessWidget {
                 backgroundColor: Colors.green,
                 textColor: Colors.white,
                 onPressed: () {
+                  Get.toNamed(Routes.homepage);
                   //Get.toNamed(Routes.changepasspage);
                   // print("Email: ${emailController.text}");
                   // print("Password: ${passwordController.text}");

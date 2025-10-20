@@ -51,8 +51,6 @@ class SecondriderPage extends StatelessWidget {
                     ),
                   ),
                 ),
-
-
               ],
             ),
           ),

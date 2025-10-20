@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:onboarding/Controllers/CheckController.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import '../Controllers/passwoardController.dart';
 import '../Routes/Routespages.dart';
 import '../Widgets/CustomButton.dart';
@@ -225,23 +224,38 @@ class Accountpage extends StatelessWidget {
                 maxlines: 1,
               ),
               SizedBox(height: 8),
-              Obx(()=> TextField(
-                decoration: InputDecoration(
-                  hintText: "Enter Password",
-                  hintStyle: TextStyle(fontSize: 12,color: Colors.grey),
-                  border: OutlineInputBorder(
-                      borderSide:BorderSide(color: Colors.black,width: 1),
-                      borderRadius: BorderRadius.circular(8)),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black, width: 1), // যখন ফোকাস করবে তখন রঙ পাল্টাবে
-                    borderRadius: BorderRadius.circular(8),
+              Obx(
+                () => Container(
+                  height: 48,
+                  width: double.maxFinite,
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: "Enter Password",
+                      hintStyle: TextStyle(fontSize: 12, color: Colors.grey),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black, width: 1),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.black,
+                          width: 1,
+                        ), // যখন ফোকাস করবে তখন রঙ পাল্টাবে
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          controllerpass.pass.value =
+                              !controllerpass.pass.value;
+                        },
+                        icon: controllerpass.pass.value
+                            ? Icon(Icons.visibility_off)
+                            : Icon(Icons.visibility),
+                      ),
+                    ),
+                    obscureText: controllerpass.pass.value,
                   ),
-                  suffixIcon: IconButton(onPressed: (){
-                    controllerpass.pass.value=!controllerpass.pass.value;
-                  }, icon: controllerpass.pass.value?Icon(Icons.visibility_off):Icon(Icons.visibility)),
                 ),
-                obscureText: controllerpass.pass.value,
-              ),
               ),
 
               SizedBox(height: 16),
@@ -254,23 +268,38 @@ class Accountpage extends StatelessWidget {
               ),
               SizedBox(height: 8),
 
-              Obx(()=> TextField(
-                decoration: InputDecoration(
-                  hintText: "Enter Password",
-                  hintStyle: TextStyle(fontSize: 12,color: Colors.grey),
-                  border: OutlineInputBorder(
-                      borderSide:BorderSide(color: Colors.black,width: 1),
-                      borderRadius: BorderRadius.circular(8)),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black, width: 1), // যখন ফোকাস করবে তখন রঙ পাল্টাবে
-                    borderRadius: BorderRadius.circular(8),
+              Obx(
+                () => Container(
+                  height: 48,
+                  width: double.maxFinite,
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: "Enter Password",
+                      hintStyle: TextStyle(fontSize: 12, color: Colors.grey),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black, width: 1),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.black,
+                          width: 1,
+                        ), // যখন ফোকাস করবে তখন রঙ পাল্টাবে
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          controllerpass.password.value =
+                              !controllerpass.password.value;
+                        },
+                        icon: controllerpass.password.value
+                            ? Icon(Icons.visibility_off)
+                            : Icon(Icons.visibility),
+                      ),
+                    ),
+                    obscureText: controllerpass.password.value,
                   ),
-                  suffixIcon: IconButton(onPressed: (){
-                    controllerpass.password.value=!controllerpass.password.value;
-                  }, icon: controllerpass.password.value?Icon(Icons.visibility_off):Icon(Icons.visibility)),
                 ),
-                obscureText: controllerpass.password.value,
-              ),
               ),
 
               SizedBox(height: 19),

@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:onboarding/Widgets/CustomDialog.dart';
-
 import '../Controllers/passwoardController.dart';
-import '../Routes/Routespages.dart';
 import '../Widgets/CustomButton.dart';
 import '../Widgets/CustomText.dart';
-import '../Widgets/CustomTextField.dart';
 
 class ChangePassPage extends StatelessWidget {
   ChangePassPage({super.key});
@@ -21,9 +18,12 @@ class ChangePassPage extends StatelessWidget {
       appBar: AppBar(
         toolbarHeight: 40,
         backgroundColor: Colors.white,
-        leading: IconButton(onPressed: (){
-          Get.back();
-        }, icon: Image.asset("assets/backicon.png")),
+        leading: IconButton(
+          onPressed: () {
+            Get.back();
+          },
+          icon: Image.asset("assets/backicon.png"),
+        ),
       ),
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -82,23 +82,37 @@ class ChangePassPage extends StatelessWidget {
               ),
               SizedBox(height: 5),
 
-              Obx(()=> TextField(
-                decoration: InputDecoration(
-                  hintText: "Create a password",
-                  hintStyle: TextStyle(fontSize: 12,color: Colors.grey),
-                  border: OutlineInputBorder(
-                      borderSide:BorderSide(color: Colors.black,width: 1),
-                      borderRadius: BorderRadius.circular(8)),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black, width: 1), // যখন ফোকাস করবে তখন রঙ পাল্টাবে
-                    borderRadius: BorderRadius.circular(8),
+              Obx(
+                () => Container(
+                  height: 48,
+                  width: double.maxFinite,
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: "Create a password",
+                      hintStyle: TextStyle(fontSize: 12, color: Colors.grey),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black, width: 1),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.black,
+                          width: 1,
+                        ), // যখন ফোকাস করবে তখন রঙ পাল্টাবে
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          controller.pass.value = !controller.pass.value;
+                        },
+                        icon: controller.pass.value
+                            ? Icon(Icons.visibility_off)
+                            : Icon(Icons.visibility),
+                      ),
+                    ),
+                    obscureText: controller.pass.value,
                   ),
-                  suffixIcon: IconButton(onPressed: (){
-                    controller.pass.value=!controller.pass.value;
-                  }, icon: controller.pass.value?Icon(Icons.visibility_off):Icon(Icons.visibility)),
                 ),
-                obscureText: controller.pass.value,
-              ),
               ),
 
               SizedBox(height: 15),
@@ -110,25 +124,40 @@ class ChangePassPage extends StatelessWidget {
                 fontWeight: FontWeight.bold,
                 maxlines: 1,
               ),
-               SizedBox(height: 5),
+              SizedBox(height: 5),
 
-              Obx(()=> TextField(
-                decoration: InputDecoration(
-                  hintText: "Re-enter your new password",
-                  hintStyle: TextStyle(fontSize: 12,color: Colors.grey),
-                  border: OutlineInputBorder(
-                      borderSide:BorderSide(color: Colors.black,width: 1),
-                      borderRadius: BorderRadius.circular(8)),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black, width: 1), // যখন ফোকাস করবে তখন রঙ পাল্টাবে
-                    borderRadius: BorderRadius.circular(8),
+              Obx(
+                () => Container(
+                  height: 48,
+                  width: double.maxFinite,
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: "Re-enter your new password",
+                      hintStyle: TextStyle(fontSize: 12, color: Colors.grey),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black, width: 1),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.black,
+                          width: 1,
+                        ), // যখন ফোকাস করবে তখন রঙ পাল্টাবে
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          controller.password.value =
+                              !controller.password.value;
+                        },
+                        icon: controller.password.value
+                            ? Icon(Icons.visibility_off)
+                            : Icon(Icons.visibility),
+                      ),
+                    ),
+                    obscureText: controller.password.value,
                   ),
-                  suffixIcon: IconButton(onPressed: (){
-                    controller.password.value=!controller.password.value;
-                  }, icon: controller.password.value?Icon(Icons.visibility_off):Icon(Icons.visibility)),
                 ),
-                obscureText: controller.password.value,
-              ),
               ),
 
               SizedBox(height: 30),

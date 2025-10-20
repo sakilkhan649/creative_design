@@ -4,8 +4,6 @@ import 'package:get/get.dart';
 import 'package:onboarding/Controllers/BoxController.dart';
 import 'package:onboarding/Routes/Routespages.dart';
 import 'package:onboarding/Widgets/CustomText.dart';
-import 'package:onboarding/Widgets/CustomTextField.dart';
-
 import '../Controllers/BottomController.dart';
 
 class HomePage extends StatelessWidget {
@@ -14,23 +12,16 @@ class HomePage extends StatelessWidget {
   final nameController = TextEditingController();
   Controller obj = Get.put(Controller());
 
-
-
   final BottomNavController navController = Get.put(BottomNavController());
 
   final List<Widget> icons = [
-    Image.asset("assets/homeicon.png",height: 24,width: 24,),
-    Image.asset("assets/homeiconlist.png",height: 24,width: 24,),
-    Image.asset("assets/homeiconlist.png",height: 24,width: 24,),
-    Image.asset("assets/homeiconpersion.png",height: 24,width: 24,),
+    Image.asset("assets/homeicon.png", height: 24, width: 24),
+    Image.asset("assets/homeiconlist.png", height: 24, width: 24),
+    Image.asset("assets/homeiconlist.png", height: 24, width: 24),
+    Image.asset("assets/homeiconpersion.png", height: 24, width: 24),
   ];
 
-  final List<String> labels = [
-    "Home",
-    "",
-    "",
-    "",
-  ];
+  final List<String> labels = ["Home", "", "", ""];
   final List<Widget> pages = [
     Center(child: Text(" Home Page", style: TextStyle(fontSize: 22))),
     Center(child: Text("", style: TextStyle(fontSize: 22))),
@@ -179,7 +170,7 @@ class HomePage extends StatelessWidget {
                                               horizontal: 10,
                                             ),
                                             child: GestureDetector(
-                                              onTap: (){},
+                                              onTap: () {},
                                               child: Container(
                                                 height: 28,
                                                 width: 28,
@@ -250,7 +241,7 @@ class HomePage extends StatelessWidget {
                 ),
                 SizedBox(height: 20),
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     Get.toNamed(Routes.locationpage);
                   },
                   child: Container(
@@ -391,14 +382,12 @@ class HomePage extends StatelessWidget {
           child: Obx(() {
             return Container(
               height: 74,
-              decoration: BoxDecoration(
-                color: Colors.white,
-
-              ),
+              decoration: BoxDecoration(color: Colors.white),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: List.generate(icons.length, (index) {
-                  final bool isSelected = navController.selectedIndex.value == index;
+                  final bool isSelected =
+                      navController.selectedIndex.value == index;
                   return GestureDetector(
                     onTap: () => navController.changeIndex(index),
                     child: AnimatedContainer(
@@ -410,19 +399,19 @@ class HomePage extends StatelessWidget {
                       ),
                       child: Row(
                         children: [
-                        ColorFiltered(
-                          colorFilter: ColorFilter.mode(
-                            isSelected ? Colors.white : Colors.grey,
-                            BlendMode.srcIn,
+                          ColorFiltered(
+                            colorFilter: ColorFilter.mode(
+                              isSelected ? Colors.white : Colors.grey,
+                              BlendMode.srcIn,
+                            ),
+                            child: icons[index],
                           ),
-                          child: icons[index],
-                        ),
                           SizedBox(height: 4),
                           Text(
                             labels[index],
                             style: TextStyle(
                               fontSize: 12,
-                             // fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
+                              // fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
                               color: isSelected ? Colors.white : Colors.grey,
                             ),
                           ),
@@ -435,13 +424,7 @@ class HomePage extends StatelessWidget {
             );
           }),
         ),
-
-
-
-
-
-
-      )
+      ),
     );
   }
 }

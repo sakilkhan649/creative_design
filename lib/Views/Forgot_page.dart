@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:onboarding/Routes/Routespages.dart';
-
 import '../Widgets/CustomButton.dart';
 import '../Widgets/CustomText.dart';
 import '../Widgets/CustomTextField.dart';
 
 class ForgotPage extends StatelessWidget {
-   ForgotPage({super.key});
+  ForgotPage({super.key});
 
   final phoneController = TextEditingController();
 
@@ -17,9 +16,12 @@ class ForgotPage extends StatelessWidget {
       appBar: AppBar(
         toolbarHeight: 40,
         backgroundColor: Colors.white,
-        leading: IconButton(onPressed: (){
-          Get.back();
-        }, icon: Image.asset("assets/backicon.png")),
+        leading: IconButton(
+          onPressed: () {
+            Get.back();
+          },
+          icon: Image.asset("assets/backicon.png"),
+        ),
       ),
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -107,7 +109,6 @@ class ForgotPage extends StatelessWidget {
                   // print("Password: ${passwordController.text}");
                 },
               ),
-
             ],
           ),
         ),

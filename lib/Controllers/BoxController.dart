@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 
-class Controller extends GetxController{
-
+class Controller extends GetxController {
   final List<Map<String, dynamic>> mylist = [
     {
       "name": "Rahim Uddin",
@@ -47,5 +46,4 @@ class Controller extends GetxController{
       "amount": "+88.00",
     },
   ].obs;
-
 }

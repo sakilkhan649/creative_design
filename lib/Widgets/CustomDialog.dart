@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:onboarding/Routes/Routespages.dart';
 
 import 'CustomButton.dart';
 import 'CustomText.dart';
@@ -75,6 +77,7 @@ class Customdialog extends StatelessWidget {
                   backgroundColor: Colors.green,
                   textColor: Colors.white,
                   onPressed: () {
+                    Get.toNamed(Routes.singinpage);
                     // print("Email: ${emailController.text}");
                     // print("Password: ${passwordController.text}");
                   },

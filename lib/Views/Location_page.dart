@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:onboarding/Routes/Routespages.dart';
 import 'package:onboarding/Widgets/CustomButton.dart';
-
 import '../Widgets/CustomText.dart';
 
 class LocationPage extends StatelessWidget {

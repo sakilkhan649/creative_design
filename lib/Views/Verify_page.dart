@@ -21,9 +21,12 @@ class VerifyPage extends StatelessWidget {
       appBar: AppBar(
         toolbarHeight: 40,
         backgroundColor: Colors.white,
-        leading: IconButton(onPressed: (){
-          Get.back();
-        }, icon: Image.asset("assets/backicon.png")),
+        leading: IconButton(
+          onPressed: () {
+            Get.back();
+          },
+          icon: Image.asset("assets/backicon.png"),
+        ),
       ),
       backgroundColor: Colors.white,
       body: SafeArea(

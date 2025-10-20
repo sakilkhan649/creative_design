@@ -9,13 +9,11 @@ class OnboardingPage extends StatelessWidget {
 
   final controller = OnboardingController();
 
-  // Button style
   ButtonStyle buttonStyleone = ElevatedButton.styleFrom(
     minimumSize: const Size(280, 50),
     backgroundColor: Colors.green,
     padding: EdgeInsets.all(10),
   );
-  // Button style
   ButtonStyle buttonStyletwo = ElevatedButton.styleFrom(
     minimumSize: const Size(280, 50),
     backgroundColor: Colors.white,

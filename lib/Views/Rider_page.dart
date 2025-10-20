@@ -47,12 +47,10 @@ class RiderPage extends StatelessWidget {
                     borderRadius: BorderRadius.all(Radius.circular(9)),
                     image: DecorationImage(
                       image: AssetImage("assets/locationmainpic.png"),
-                      fit: BoxFit.cover, // পুরো container ভরে যাবে
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ),
-
-
               ],
             ),
           ),

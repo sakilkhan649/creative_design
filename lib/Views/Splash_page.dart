@@ -4,11 +4,11 @@ import 'package:get/get.dart';
 import 'package:onboarding/Controllers/SplashController.dart';
 
 class SplashPage extends StatelessWidget {
-   SplashPage({super.key});
+  SplashPage({super.key});
 
-   final controller = Get.put(SplashController());
+  final controller = Get.put(SplashController());
 
-   @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -24,7 +24,7 @@ class SplashPage extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(50)),
           ),
-          child:CircleAvatar(
+          child: CircleAvatar(
             radius: 50,
             backgroundImage: AssetImage("assets/picone.png"),
           ),

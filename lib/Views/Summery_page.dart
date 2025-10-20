@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:onboarding/Widgets/CustomText.dart';
-
-import '../Routes/Routespages.dart';
-import '../Widgets/CustomButton.dart';
 
 class SummeryPage extends StatelessWidget {
   const SummeryPage({super.key});
@@ -51,12 +47,10 @@ class SummeryPage extends StatelessWidget {
                     borderRadius: BorderRadius.all(Radius.circular(9)),
                     image: DecorationImage(
                       image: AssetImage("assets/locationmainpic.png"),
-                      fit: BoxFit.cover, // পুরো container ভরে যাবে
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ),
-
-
               ],
             ),
           ),

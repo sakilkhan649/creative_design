@@ -14,7 +14,7 @@ import 'package:onboarding/Views/Summery_page.dart';
 import 'package:onboarding/Views/Verify_page.dart';
 import 'package:onboarding/Views/parcel_page.dart';
 
-class Routes{
+class Routes {
   static const String ondoardingpage = "/Onboardingpage";
   static const String singinpage = "/Singinpage";
   static const String forgotpage = "/Forgotpage";
@@ -30,22 +30,23 @@ class Routes{
   static const String riderpag = "/Riderpage";
   static const String secondriderpage = "/Secondriderpage";
 
-  static List<GetPage> routes=[
-    GetPage(name: ondoardingpage, page: ()=> OnboardingPage()),
-    GetPage(name: singinpage, page: ()=> SigninPage()),
-    GetPage(name: forgotpage, page: ()=> ForgotPage()),
-    GetPage(name: verifypage, page: ()=> VerifyPage()),
-    GetPage(name: changepasspage, page: ()=> ChangePassPage()),
-    GetPage(name: splashpage, page: ()=> SplashPage()),
-    GetPage(name: accountverify, page: ()=> AccountVerify()),
-    GetPage(name: homepage, page: ()=> HomePage()),
-    GetPage(name: locationpage, page: ()=> LocationPage()),
-    GetPage(name: parcelpage, page: ()=> ParcelPage()),
-    GetPage(name: summerypage, page: ()=> SummeryPage()),
-    GetPage(name: riderpag, page: ()=> RiderPage()),
-    GetPage(name: secondriderpage, page: ()=> SecondriderPage()),
-    GetPage(name: accountpage, page: ()=> Accountpage(url: "https://www.google.com",)),
+  static List<GetPage> routes = [
+    GetPage(name: ondoardingpage, page: () => OnboardingPage()),
+    GetPage(name: singinpage, page: () => SigninPage()),
+    GetPage(name: forgotpage, page: () => ForgotPage()),
+    GetPage(name: verifypage, page: () => VerifyPage()),
+    GetPage(name: changepasspage, page: () => ChangePassPage()),
+    GetPage(name: splashpage, page: () => SplashPage()),
+    GetPage(name: accountverify, page: () => AccountVerify()),
+    GetPage(name: homepage, page: () => HomePage()),
+    GetPage(name: locationpage, page: () => LocationPage()),
+    GetPage(name: parcelpage, page: () => ParcelPage()),
+    GetPage(name: summerypage, page: () => SummeryPage()),
+    GetPage(name: riderpag, page: () => RiderPage()),
+    GetPage(name: secondriderpage, page: () => SecondriderPage()),
+    GetPage(
+      name: accountpage,
+      page: () => Accountpage(url: "https://www.google.com"),
+    ),
   ];
-
-
 }
