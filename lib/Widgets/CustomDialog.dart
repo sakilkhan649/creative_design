@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:onboarding/Routes/Routespages.dart';
-
+import '../Core/AppRoutes/AppRoute.dart';
 import 'CustomButton.dart';
 import 'CustomText.dart';
 

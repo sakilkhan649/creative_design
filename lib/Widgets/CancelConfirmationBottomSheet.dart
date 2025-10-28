@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:onboarding/Routes/Routespages.dart';
+import '../Core/AppRoutes/AppRoute.dart';
 import 'CustomText.dart';
 
 class CancelConfirmationBottomSheet extends StatelessWidget {
@@ -60,7 +60,7 @@ class CancelConfirmationBottomSheet extends StatelessWidget {
             SizedBox(height: 24),
             GestureDetector(
               onTap: () {
-                Get.toNamed(Routes.homepage);
+                Get.toNamed(Routes.mainpage);
               },
               child: Container(
                 height: 48,

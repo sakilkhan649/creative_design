@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:onboarding/Routes/Routespages.dart';
 import 'package:onboarding/Widgets/CancelConfirmationBottomSheet.dart';
-
 import 'CustomText.dart';
 
 class Riderarrivingbottomsheet extends StatelessWidget {

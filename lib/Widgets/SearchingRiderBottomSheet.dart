@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:onboarding/Routes/Routespages.dart';
 import 'package:onboarding/Widgets/RiderarrivingBottomSheet.dart';
-import '../../Controllers/SecondSlidercontroller.dart';
+import '../Controllers/SliderController/SecondSlidercontroller.dart';
+import '../Core/AppRoutes/AppRoute.dart';
 import 'CancelConfirmationBottomSheet.dart';
 import 'CustomText.dart';
 

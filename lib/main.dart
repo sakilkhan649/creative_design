@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:onboarding/Dependencys/Dependencys.dart';
-import 'package:onboarding/Routes/Routespages.dart';
-
-import 'Views/Onboarding_page.dart' show OnboardingPage;
+import 'Core/AppRoutes/AppRoute.dart';
+import 'Core/Dependencys/Dependency.dart';
+import 'Views/OnboardScreen/Onboarding_page.dart' show OnboardingPage;
 
 void main() {
   Dependencys di = Dependencys();

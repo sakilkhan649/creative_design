@@ -1,29 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:onboarding/Controllers/passwoardController.dart';
-import 'package:onboarding/Routes/Routespages.dart';
-import 'package:onboarding/Widgets/CustomButton.dart';
-import 'package:onboarding/Widgets/CustomText.dart';
-import 'package:onboarding/Widgets/CustomTextField.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:onboarding/Widgets/CustomDialog.dart';
+import '../../Controllers/PasswordController/passwoardController.dart';
+import '../../Widgets/CustomButton.dart';
+import '../../Widgets/CustomText.dart';
 
-class SigninPage extends StatelessWidget {
-  SigninPage({super.key});
+class ChangePassPage extends StatelessWidget {
+  ChangePassPage({super.key});
 
-  final String url = "https://www.google.com";
-
-  Future<void> openLink() async {
-    final Uri urle = Uri.parse(url);
-    await launchUrl(urle);
-  }
-
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
+  final changepassController = TextEditingController();
+  final changepassnewController = TextEditingController();
   final controller = Get.put(PasswordController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 40,
+        backgroundColor: Colors.white,
+        leading: IconButton(
+          onPressed: () {
+            Get.back();
+          },
+          icon: Image.asset("assets/backicon.png"),
+        ),
+      ),
       backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
@@ -36,7 +37,7 @@ class SigninPage extends StatelessWidget {
                 child: Column(
                   children: [
                     Customtext(
-                      text: "Welcome Back",
+                      text: "Reset Password",
                       color: Colors.green,
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -46,7 +47,8 @@ class SigninPage extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 30),
                       child: Customtext(
-                        text: "Log in to continue shopping and enjoy ",
+                        text:
+                            "Please set a new password to secure your account",
                         color: Colors.black87,
                         fontSize: 12,
                         fontWeight: FontWeight.normal,
@@ -57,7 +59,7 @@ class SigninPage extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 30),
                       child: Customtext(
-                        text: "personalized offers ",
+                        text: "and regain access",
                         color: Colors.black87,
                         fontSize: 12,
                         fontWeight: FontWeight.normal,
@@ -67,24 +69,6 @@ class SigninPage extends StatelessWidget {
                     ),
                   ],
                 ),
-              ),
-
-              SizedBox(height: 30),
-
-              Customtext(
-                text: "Email or Phone Number",
-                color: Colors.black,
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
-                maxlines: 1,
-              ),
-              SizedBox(height: 5),
-              Customtextfield(
-                controller: emailController,
-                hintText: "Enter your email address",
-                color: Colors.black45,
-                fontSize: 12,
-                fontWeight: FontWeight.normal,
               ),
 
               SizedBox(height: 30),
@@ -104,7 +88,7 @@ class SigninPage extends StatelessWidget {
                   width: double.maxFinite,
                   child: TextField(
                     decoration: InputDecoration(
-                      hintText: "Enter Password",
+                      hintText: "Create a password",
                       hintStyle: TextStyle(fontSize: 12, color: Colors.grey),
                       border: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.black, width: 1),
@@ -130,80 +114,70 @@ class SigninPage extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 10),
-              Align(
-                alignment: Alignment.centerRight,
-                child: GestureDetector(
-                  onTap: () {
-                    Get.toNamed(Routes.forgotpage);
-                  },
-                  child: Customtext(
-                    text: "Forgot password?",
-                    color: Colors.green,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w500,
-                    maxlines: 1,
+
+              SizedBox(height: 15),
+
+              Customtext(
+                text: "Confirm New Password",
+                color: Colors.black,
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+                maxlines: 1,
+              ),
+              SizedBox(height: 5),
+
+              Obx(
+                () => Container(
+                  height: 48,
+                  width: double.maxFinite,
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: "Re-enter your new password",
+                      hintStyle: TextStyle(fontSize: 12, color: Colors.grey),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black, width: 1),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.black,
+                          width: 1,
+                        ), // যখন ফোকাস করবে তখন রঙ পাল্টাবে
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          controller.password.value =
+                              !controller.password.value;
+                        },
+                        icon: controller.password.value
+                            ? Icon(Icons.visibility_off)
+                            : Icon(Icons.visibility),
+                      ),
+                    ),
+                    obscureText: controller.password.value,
                   ),
                 ),
               ),
 
-              SizedBox(height: 10),
+              SizedBox(height: 30),
 
               CustomButton(
-                text: "Sign In",
+                text: "Save Changes",
                 backgroundColor: Colors.green,
                 textColor: Colors.white,
                 onPressed: () {
-                  Get.toNamed(Routes.homepage);
+                  showDialog(
+                    context: context,
+                    builder: (context) => Customdialog(
+                      title: "Password Changed!",
+                      imagePath: "assets/checkicon.png",
+                      color: Colors.green,
+                    ),
+                  );
                   // print("Email: ${emailController.text}");
                   // print("Password: ${passwordController.text}");
                 },
-              ),
-
-              SizedBox(height: 10),
-
-              Align(
-                alignment: Alignment.center,
-                child: Customtext(
-                  text: "or",
-                  color: Colors.black,
-                  fontSize: 14,
-                  fontWeight: FontWeight.normal,
-                  maxlines: 1,
-                ),
-              ),
-              SizedBox(height: 10),
-              CustomButton(
-                text: "Continue with Google",
-                backgroundColor: Colors.white,
-                textColor: Colors.black,
-                onPressed: openLink,
-              ),
-              SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Customtext(
-                    text: "Don’t have an account?",
-                    color: Colors.black45,
-                    fontSize: 12,
-                    fontWeight: FontWeight.normal,
-                    maxlines: 1,
-                  ),
-                  SizedBox(width: 6),
-                  GestureDetector(
-                    onTap: () {
-                      Get.toNamed(Routes.accountpage);
-                    },
-                    child: Customtext(
-                      text: "Create Account",
-                      color: Colors.green,
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                      maxlines: 1,
-                    ),
-                  ),
-                ],
               ),
             ],
           ),

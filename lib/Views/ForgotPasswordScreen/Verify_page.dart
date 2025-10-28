@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:onboarding/Routes/Routespages.dart';
 import 'package:onboarding/Widgets/CustomVerify.dart';
 
-import '../Widgets/CustomButton.dart';
-import '../Widgets/CustomText.dart';
-import '../Widgets/CustomTextField.dart';
+import '../../Core/AppRoutes/AppRoute.dart';
+import '../../Widgets/CustomButton.dart';
+import '../../Widgets/CustomText.dart';
+import '../../Widgets/CustomTextField.dart';
 
 class VerifyPage extends StatelessWidget {
   VerifyPage({super.key});

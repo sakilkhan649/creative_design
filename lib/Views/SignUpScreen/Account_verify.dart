@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../Routes/Routespages.dart';
-import '../Widgets/CustomButton.dart';
-import '../Widgets/CustomText.dart';
-import '../Widgets/CustomVerify.dart';
+import '../../Core/AppRoutes/AppRoute.dart';
+import '../../Widgets/CustomButton.dart';
+import '../../Widgets/CustomText.dart';
+import '../../Widgets/CustomVerify.dart';
 
 class AccountVerify extends StatelessWidget {
   AccountVerify({super.key});
@@ -127,7 +127,7 @@ class AccountVerify extends StatelessWidget {
                 backgroundColor: Colors.green,
                 textColor: Colors.white,
                 onPressed: () {
-                  Get.toNamed(Routes.homepage);
+                  Get.toNamed(Routes.mainpage);
                   //Get.toNamed(Routes.changepasspage);
                   // print("Email: ${emailController.text}");
                   // print("Password: ${passwordController.text}");

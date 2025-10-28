@@ -1,7 +1,8 @@
 import 'dart:async';
 
 import 'package:get/get.dart';
-import 'package:onboarding/Routes/Routespages.dart';
+
+import '../../Core/AppRoutes/AppRoute.dart';
 
 class SplashController extends GetxController {
   void onInit() {

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:onboarding/Controllers/CarboxController.dart';
-import 'package:onboarding/Controllers/SecondSlidercontroller.dart';
-import 'package:onboarding/Controllers/SliderController.dart';
+import 'package:onboarding/Controllers/CarBoxController/CarboxController.dart';
+import 'package:onboarding/Controllers/SliderController/SecondSlidercontroller.dart';
+import 'package:onboarding/Controllers/SliderController/SliderController.dart';
 import 'package:onboarding/Widgets/ProductListBottomSheet.dart';
-import '../Widgets/CustomButton.dart';
-import '../Widgets/CustomText.dart';
-import '../Widgets/CustomTextField.dart';
+import '../../Widgets/CustomButton.dart';
+import '../../Widgets/CustomText.dart';
+import '../../Widgets/CustomTextField.dart';
 
 class ParcelPage extends StatelessWidget {
   ParcelPage({super.key});

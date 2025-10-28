@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:onboarding/Controllers/Onboarding_controller.dart';
-import 'package:onboarding/Routes/Routespages.dart';
+import 'package:onboarding/Controllers/OnboardingController/Onboarding_controller.dart';
+
+import '../../Core/AppRoutes/AppRoute.dart';
 
 class OnboardingPage extends StatelessWidget {
   OnboardingPage({super.key});

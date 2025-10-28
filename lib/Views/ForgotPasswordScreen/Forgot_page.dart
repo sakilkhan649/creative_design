@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:onboarding/Routes/Routespages.dart';
-import '../Widgets/CustomButton.dart';
-import '../Widgets/CustomText.dart';
-import '../Widgets/CustomTextField.dart';
+import '../../Core/AppRoutes/AppRoute.dart';
+import '../../Widgets/CustomButton.dart';
+import '../../Widgets/CustomText.dart';
+import '../../Widgets/CustomTextField.dart';
 
 class ForgotPage extends StatelessWidget {
   ForgotPage({super.key});

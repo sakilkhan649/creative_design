@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:onboarding/Controllers/ProductController.dart';
+import 'package:onboarding/Controllers/ListViewBilderController/ProductController.dart';
 import 'package:onboarding/Widgets/OrderSummaryBottomSheet.dart';
-
-import '../Routes/Routespages.dart';
+import '../Core/AppRoutes/AppRoute.dart';
 import 'CustomButton.dart';
 import 'CustomText.dart';
 

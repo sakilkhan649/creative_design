@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:onboarding/Controllers/CheckController.dart';
+import 'package:onboarding/Controllers/CheckController/CheckController.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../Controllers/passwoardController.dart';
-import '../Routes/Routespages.dart';
-import '../Widgets/CustomButton.dart';
-import '../Widgets/CustomText.dart';
-import '../Widgets/CustomTextField.dart';
+import '../../Controllers/PasswordController/passwoardController.dart';
+import '../../Core/AppRoutes/AppRoute.dart';
+import '../../Widgets/CustomButton.dart';
+import '../../Widgets/CustomText.dart';
+import '../../Widgets/CustomTextField.dart';
 
 class Accountpage extends StatelessWidget {
   final String url;
@@ -389,7 +389,7 @@ class Accountpage extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Get.toNamed(Routes.homepage);
+                      Get.toNamed(Routes.mainpage);
                     },
                     child: Customtext(
                       text: "Sign in",

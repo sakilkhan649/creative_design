@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../Routes/Routespages.dart';
+import '../Core/AppRoutes/AppRoute.dart';
 import 'CustomButton.dart';
 import 'CustomText.dart';
 import 'SearchingRiderBottomSheet.dart';
