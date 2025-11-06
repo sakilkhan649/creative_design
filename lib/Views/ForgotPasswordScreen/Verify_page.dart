@@ -15,6 +15,9 @@ class VerifyPage extends StatelessWidget {
   final threeController = TextEditingController();
   final fourController = TextEditingController();
 
+  //Global Variable..............
+  final _formkey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,112 +32,165 @@ class VerifyPage extends StatelessWidget {
         ),
       ),
       backgroundColor: Colors.white,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 40),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Align(
-                alignment: Alignment.center,
-                child: Column(
-                  children: [
-                    Customtext(
-                      text: "Verify OTP",
-                      color: Colors.green,
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      maxlines: 1,
-                    ),
-                    SizedBox(height: 10),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 30),
-                      child: Customtext(
-                        text:
-                            "Enter your OTP which has been sent to your phone",
-                        color: Colors.black87,
-                        fontSize: 12,
-                        fontWeight: FontWeight.normal,
+      body: Form(
+        key: _formkey,
+        child: SafeArea(
+          child: SingleChildScrollView(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Align(
+                  alignment: Alignment.center,
+                  child: Column(
+                    children: [
+                      Customtext(
+                        text: "Verify OTP",
+                        color: Colors.green,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
                         maxlines: 1,
-                        textline: TextAlign.center,
+                      ),
+                      SizedBox(height: 10),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 30),
+                        child: Customtext(
+                          text:
+                              "Enter your OTP which has been sent to your phone",
+                          color: Colors.black87,
+                          fontSize: 12,
+                          fontWeight: FontWeight.normal,
+                          maxlines: 1,
+                          textline: TextAlign.center,
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 30),
+                        child: Customtext(
+                          text: "and completely verify your account.",
+                          color: Colors.black87,
+                          fontSize: 12,
+                          fontWeight: FontWeight.normal,
+                          maxlines: 1,
+                          textline: TextAlign.center,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                SizedBox(height: 20),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Customverify(
+                        hintText: "1",
+                        controller: oneController,
+                        validetor: (value) {
+                          if (value == null || value.isEmpty) {
+                            return "code...";
+                          }
+                          if (!RegExp(r'^[0-9]{1}$').hasMatch(value)) {
+                            return "code...";
+                          }
+
+                          return null;
+                        },
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 30),
-                      child: Customtext(
-                        text: "and completely verify your account.",
-                        color: Colors.black87,
-                        fontSize: 12,
-                        fontWeight: FontWeight.normal,
-                        maxlines: 1,
-                        textline: TextAlign.center,
+                    SizedBox(width: 20),
+                    Expanded(
+                      child: Customverify(
+                        hintText: "2",
+                        controller: twoController,
+                        validetor: (value) {
+                          if (value == null || value.isEmpty) {
+                            return "code...";
+                          }
+                          if (!RegExp(r'^[0-9]{1}$').hasMatch(value)) {
+                            return "code...";
+                          }
+
+                          return null;
+                        },
+                      ),
+                    ),
+                    SizedBox(width: 20),
+                    Expanded(
+                      child: Customverify(
+                        controller: threeController,
+                        validetor: (value) {
+                          if (value == null || value.isEmpty) {
+                            return "code...";
+                          }
+                          if (!RegExp(r'^[0-9]{1}$').hasMatch(value)) {
+                            return "code...";
+                          }
+
+                          return null;
+                        },
+                      ),
+                    ),
+                    SizedBox(width: 20),
+                    Expanded(
+                      child: Customverify(
+                        controller: fourController,
+                        validetor: (value) {
+                          if (value == null || value.isEmpty) {
+                            return "code...";
+                          }
+                          if (!RegExp(r'^[0-9]{1}$').hasMatch(value)) {
+                            return "code...";
+                          }
+
+                          return null;
+                        },
                       ),
                     ),
                   ],
                 ),
-              ),
+                SizedBox(height: 20),
 
-              SizedBox(height: 20),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: Customverify(
-                      hintText: "1",
-                      controller: oneController,
-                    ),
+                Align(
+                  alignment: Alignment.center,
+                  child: Customtext(
+                    text: "A code has been sent to your phone number",
+                    color: Colors.black87,
+                    fontSize: 12,
+                    fontWeight: FontWeight.normal,
+                    maxlines: 1,
+                    textline: TextAlign.center,
                   ),
-                  SizedBox(width: 20),
-                  Expanded(
-                    child: Customverify(
-                      hintText: "2",
-                      controller: twoController,
-                    ),
+                ),
+                SizedBox(height: 10),
+                Align(
+                  alignment: Alignment.center,
+                  child: Customtext(
+                    text: "Resend in 00:57",
+                    color: Colors.green,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    maxlines: 1,
                   ),
-                  SizedBox(width: 20),
-                  Expanded(child: Customverify(controller: threeController)),
-                  SizedBox(width: 20),
-                  Expanded(child: Customverify(controller: fourController)),
-                ],
-              ),
-              SizedBox(height: 20),
-
-              Align(
-                alignment: Alignment.center,
-                child: Customtext(
-                  text: "A code has been sent to your phone number",
-                  color: Colors.black87,
-                  fontSize: 12,
-                  fontWeight: FontWeight.normal,
-                  maxlines: 1,
-                  textline: TextAlign.center,
                 ),
-              ),
-              SizedBox(height: 10),
-              Align(
-                alignment: Alignment.center,
-                child: Customtext(
-                  text: "Resend in 00:57",
-                  color: Colors.green,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                  maxlines: 1,
-                ),
-              ),
-              SizedBox(height: 25),
+                SizedBox(height: 25),
 
-              CustomButton(
-                text: "Verify",
-                backgroundColor: Colors.green,
-                textColor: Colors.white,
-                onPressed: () {
-                  Get.toNamed(Routes.changepasspage);
-                  // print("Email: ${emailController.text}");
-                  // print("Password: ${passwordController.text}");
-                },
-              ),
-            ],
+                CustomButton(
+                  text: "Verify",
+                  backgroundColor: Colors.green,
+                  textColor: Colors.white,
+                  onPressed: () {
+                    if (_formkey.currentState!.validate()) {
+                      Get.toNamed(Routes.changepasspage);
+                    }
+                    // print("Email: ${emailController.text}");
+                    // print("Password: ${passwordController.text}");
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),

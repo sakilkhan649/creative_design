@@ -61,7 +61,7 @@ class ParcelPage extends StatelessWidget {
                   maxlines: 1,
                 ),
                 SizedBox(height: 8),
-                Customtextfield(
+                CustomTextField(
                   controller: emailController,
                   hintText: "Enter Receivers name",
                   color: Colors.black45,
@@ -79,7 +79,7 @@ class ParcelPage extends StatelessWidget {
                   maxlines: 1,
                 ),
                 SizedBox(height: 8),
-                Customtextfield(
+                CustomTextField(
                   controller: emailController,
                   hintText: "Enter contact Number",
                   color: Colors.black45,
@@ -95,7 +95,7 @@ class ParcelPage extends StatelessWidget {
                   maxlines: 1,
                 ),
                 SizedBox(height: 8),
-                Customtextfield(
+                CustomTextField(
                   controller: passwordController,
                   hintText: "Giver Additional Instruction ",
                   obscureText: true,
@@ -148,7 +148,7 @@ class ParcelPage extends StatelessWidget {
                   maxlines: 1,
                 ),
                 SizedBox(height: 8),
-                Customtextfield(
+                CustomTextField(
                   controller: passwordController,
                   hintText: "Give product value amount",
                   color: Colors.black45,

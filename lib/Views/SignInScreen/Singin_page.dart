@@ -22,191 +22,232 @@ class SigninPage extends StatelessWidget {
   final passwordController = TextEditingController();
   final controller = Get.put(PasswordController());
 
+  //Global Variable..............
+  final _formkey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 40),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Align(
-                alignment: Alignment.center,
-                child: Column(
-                  children: [
-                    Customtext(
-                      text: "Welcome Back",
+      body: Form(
+        key: _formkey,
+        child: SafeArea(
+          child: SingleChildScrollView(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Align(
+                  alignment: Alignment.center,
+                  child: Column(
+                    children: [
+                      Customtext(
+                        text: "Welcome Back",
+                        color: Colors.green,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        maxlines: 1,
+                      ),
+                      SizedBox(height: 10),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 30),
+                        child: Customtext(
+                          text: "Log in to continue shopping and enjoy ",
+                          color: Colors.black87,
+                          fontSize: 12,
+                          fontWeight: FontWeight.normal,
+                          maxlines: 1,
+                          textline: TextAlign.center,
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 30),
+                        child: Customtext(
+                          text: "personalized offers ",
+                          color: Colors.black87,
+                          fontSize: 12,
+                          fontWeight: FontWeight.normal,
+                          maxlines: 1,
+                          textline: TextAlign.center,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                SizedBox(height: 30),
+
+                Customtext(
+                  text: "Email or Phone Number",
+                  color: Colors.black,
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  maxlines: 1,
+                ),
+                SizedBox(height: 5),
+                CustomTextField(
+                  controller: emailController,
+                  hintText: "Enter your email address",
+                  color: Colors.black,
+                  fontSize: 12,
+                  fontWeight: FontWeight.normal,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "Enter your email or phone number";
+                    }
+                    final emailRegex = RegExp(r"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
+
+                    final phoneRegex = RegExp(r"^(?:\+?88)?01[3-9]\d{8}$");
+
+                    if (!emailRegex.hasMatch(value) && !phoneRegex.hasMatch(value)) {
+                      return "Enter a valid email or phone number";
+                    }
+
+                    return null;
+                  },
+
+
+                ),
+
+                SizedBox(height: 30),
+
+                Customtext(
+                  text: "Password",
+                  color: Colors.black,
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  maxlines: 1,
+                ),
+                SizedBox(height: 5),
+
+                Obx(
+                  () => Container(
+                    height: 48,
+                    width: double.maxFinite,
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                        hintText: "Enter Password",
+                        hintStyle: TextStyle(fontSize: 12, color: Colors.grey),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black, width: 1),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black,
+                            width: 1,
+                          ), // যখন ফোকাস করবে তখন রঙ পাল্টাবে
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        suffixIcon: IconButton(
+                          onPressed: () {
+                            controller.pass.value = !controller.pass.value;
+                          },
+                          icon: controller.pass.value
+                              ? Icon(Icons.visibility_off)
+                              : Icon(Icons.visibility),
+                        ),
+                      ),
+                      obscureText: controller.pass.value,
+
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return "Enter your password";
+                        }
+                        if (value.length < 8) {
+                          return "Password must be at least 8 characters";
+                        }
+                        if (!RegExp(
+                          r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$',
+                        ).hasMatch(value)) {
+                          return "Password must include upper, lower, number & special character";
+                        }
+
+                        return null;
+                      },
+                    ),
+                  ),
+                ),
+                SizedBox(height: 10),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: GestureDetector(
+                    onTap: () {
+                      Get.toNamed(Routes.forgotpage);
+                    },
+                    child: Customtext(
+                      text: "Forgot password?",
                       color: Colors.green,
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w500,
                       maxlines: 1,
                     ),
-                    SizedBox(height: 10),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 30),
-                      child: Customtext(
-                        text: "Log in to continue shopping and enjoy ",
-                        color: Colors.black87,
-                        fontSize: 12,
-                        fontWeight: FontWeight.normal,
-                        maxlines: 1,
-                        textline: TextAlign.center,
-                      ),
+                  ),
+                ),
+
+                SizedBox(height: 10),
+
+                CustomButton(
+                  text: "Sign In",
+                  backgroundColor: Colors.green,
+                  textColor: Colors.white,
+                  onPressed: () {
+                    if (_formkey.currentState!.validate()) {
+                      Get.toNamed(Routes.mainpage);
+                    }
+
+                    // print("Email: ${emailController.text}");
+                    // print("Password: ${passwordController.text}");
+                  },
+                ),
+
+                SizedBox(height: 10),
+
+                Align(
+                  alignment: Alignment.center,
+                  child: Customtext(
+                    text: "or",
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontWeight: FontWeight.normal,
+                    maxlines: 1,
+                  ),
+                ),
+                SizedBox(height: 10),
+                CustomButton(
+                  text: "Continue with Google",
+                  backgroundColor: Colors.white,
+                  textColor: Colors.black,
+                  onPressed: openLink,
+                ),
+                SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Customtext(
+                      text: "Don’t have an account?",
+                      color: Colors.black45,
+                      fontSize: 12,
+                      fontWeight: FontWeight.normal,
+                      maxlines: 1,
                     ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 30),
+                    SizedBox(width: 6),
+                    GestureDetector(
+                      onTap: () {
+                        Get.toNamed(Routes.accountpage);
+                      },
                       child: Customtext(
-                        text: "personalized offers ",
-                        color: Colors.black87,
+                        text: "Create Account",
+                        color: Colors.green,
                         fontSize: 12,
-                        fontWeight: FontWeight.normal,
+                        fontWeight: FontWeight.bold,
                         maxlines: 1,
-                        textline: TextAlign.center,
                       ),
                     ),
                   ],
                 ),
-              ),
-
-              SizedBox(height: 30),
-
-              Customtext(
-                text: "Email or Phone Number",
-                color: Colors.black,
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
-                maxlines: 1,
-              ),
-              SizedBox(height: 5),
-              Customtextfield(
-                controller: emailController,
-                hintText: "Enter your email address",
-                color: Colors.black45,
-                fontSize: 12,
-                fontWeight: FontWeight.normal,
-              ),
-
-              SizedBox(height: 30),
-
-              Customtext(
-                text: "Password",
-                color: Colors.black,
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
-                maxlines: 1,
-              ),
-              SizedBox(height: 5),
-
-              Obx(
-                () => Container(
-                  height: 48,
-                  width: double.maxFinite,
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: "Enter Password",
-                      hintStyle: TextStyle(fontSize: 12, color: Colors.grey),
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.black, width: 1),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.black,
-                          width: 1,
-                        ), // যখন ফোকাস করবে তখন রঙ পাল্টাবে
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      suffixIcon: IconButton(
-                        onPressed: () {
-                          controller.pass.value = !controller.pass.value;
-                        },
-                        icon: controller.pass.value
-                            ? Icon(Icons.visibility_off)
-                            : Icon(Icons.visibility),
-                      ),
-                    ),
-                    obscureText: controller.pass.value,
-                  ),
-                ),
-              ),
-              SizedBox(height: 10),
-              Align(
-                alignment: Alignment.centerRight,
-                child: GestureDetector(
-                  onTap: () {
-                    Get.toNamed(Routes.forgotpage);
-                  },
-                  child: Customtext(
-                    text: "Forgot password?",
-                    color: Colors.green,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w500,
-                    maxlines: 1,
-                  ),
-                ),
-              ),
-
-              SizedBox(height: 10),
-
-              CustomButton(
-                text: "Sign In",
-                backgroundColor: Colors.green,
-                textColor: Colors.white,
-                onPressed: () {
-                  Get.toNamed(Routes.mainpage);
-                  // print("Email: ${emailController.text}");
-                  // print("Password: ${passwordController.text}");
-                },
-              ),
-
-              SizedBox(height: 10),
-
-              Align(
-                alignment: Alignment.center,
-                child: Customtext(
-                  text: "or",
-                  color: Colors.black,
-                  fontSize: 14,
-                  fontWeight: FontWeight.normal,
-                  maxlines: 1,
-                ),
-              ),
-              SizedBox(height: 10),
-              CustomButton(
-                text: "Continue with Google",
-                backgroundColor: Colors.white,
-                textColor: Colors.black,
-                onPressed: openLink,
-              ),
-              SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Customtext(
-                    text: "Don’t have an account?",
-                    color: Colors.black45,
-                    fontSize: 12,
-                    fontWeight: FontWeight.normal,
-                    maxlines: 1,
-                  ),
-                  SizedBox(width: 6),
-                  GestureDetector(
-                    onTap: () {
-                      Get.toNamed(Routes.accountpage);
-                    },
-                    child: Customtext(
-                      text: "Create Account",
-                      color: Colors.green,
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                      maxlines: 1,
-                    ),
-                  ),
-                ],
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

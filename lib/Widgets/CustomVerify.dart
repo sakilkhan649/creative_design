@@ -8,16 +8,18 @@ class Customverify extends StatelessWidget {
   final double fontSize;
   final FontWeight fontWeight;
   final ValueChanged<String>? onChanged;
+  final validetor;
 
   Customverify({
     super.key,
     required this.controller,
     this.hintText = " ",
     this.width = 48,
-    this.color = Colors.black45,
+    this.color = Colors.black,
     this.fontSize = 18,
     this.fontWeight = FontWeight.bold,
     this.onChanged,
+    this.validetor,
   });
 
   @override
@@ -28,7 +30,8 @@ class Customverify extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       child: SizedBox(
         width: width,
-        child: TextField(
+        child: TextFormField(
+          validator: validetor,
           controller: controller,
           onChanged: onChanged,
           textAlign: TextAlign.center,
