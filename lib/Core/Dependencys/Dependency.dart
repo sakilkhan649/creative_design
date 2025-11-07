@@ -6,19 +6,20 @@ import 'package:onboarding/Views/ChooseLocationScreen/Location_page.dart';
 import 'package:onboarding/Views/MainScreen/Mainpage.dart';
 import 'package:onboarding/Views/OnboardScreen/Onboarding_page.dart';
 import 'package:onboarding/Views/BottomNavthreeScreen/Profilepage.dart';
+import 'package:onboarding/Views/SignUpScreen/RolePage/Rolepage.dart';
 import 'package:onboarding/Views/SearchingRiderScreen/Rider_page.dart';
 import 'package:onboarding/Views/BottomNavthreeScreen/Searchpage.dart';
 import 'package:onboarding/Views/RiderScreen/SecondRider_page.dart';
 import 'package:onboarding/Views/SignInScreen/Singin_page.dart';
 import 'package:onboarding/Views/OnboardScreen/Splash_page.dart';
+import 'package:onboarding/Views/SignUpScreen/RolePage/UserAndRiderpage/RiderAccountpage.dart';
+import 'package:onboarding/Views/SignUpScreen/RolePage/UserAndRiderpage/UserAccountpage.dart';
 import 'package:onboarding/Views/SummeryScreen/Summery_page.dart';
 import 'package:onboarding/Views/ForgotPasswordScreen/Verify_page.dart';
 import 'package:onboarding/Views/ParcelDetailsScreen/parcel_page.dart';
 import '../../Controllers/BottomNavigationController/BottomController.dart';
 import '../../Views/BottomNavthreeScreen/Favoritepage.dart';
 import '../../Views/SignUpScreen/Account_verify.dart';
-import '../../Views/SignUpScreen/Accountpage.dart';
-
 final BottomNavController navController = Get.put(BottomNavController());
 int currentIndex = navController.selectedIndex.value;
 
@@ -37,10 +38,18 @@ class Dependencys {
     Get.lazyPut(() => SummeryPage(), fenix: true);
     Get.lazyPut(() => RiderPage(), fenix: true);
     Get.lazyPut(() => SecondriderPage(), fenix: true);
-    Get.lazyPut(() => Searchpage(index:currentIndex ,), fenix: true);
-    Get.lazyPut(() => Favoritepage(index:currentIndex ,), fenix: true);
-    Get.lazyPut(() => Profilepage(index:currentIndex ,), fenix: true);
+    Get.lazyPut(() => Searchpage(index: currentIndex), fenix: true);
+    Get.lazyPut(() => Favoritepage(index: currentIndex), fenix: true);
+    Get.lazyPut(() => Profilepage(index: currentIndex), fenix: true);
     Get.lazyPut(() => MainPage(), fenix: true);
-    Get.lazyPut(() => Accountpage(url: "https://www.google.com"), fenix: true);
+    Get.lazyPut(
+      () => Useraccountpage(url: "https://www.google.com"),
+      fenix: true,
+    );
+    Get.lazyPut(
+      () => Rideraccountpage(url: "https://www.google.com"),
+      fenix: true,
+    );
+    Get.lazyPut(() => CustomTabbar(), fenix: true);
   }
 }

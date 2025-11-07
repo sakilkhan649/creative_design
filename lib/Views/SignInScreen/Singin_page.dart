@@ -234,7 +234,7 @@ class SigninPage extends StatelessWidget {
                     SizedBox(width: 6),
                     GestureDetector(
                       onTap: () {
-                        Get.toNamed(Routes.accountpage);
+                        Get.toNamed(Routes.rolepage);
                       },
                       child: Customtext(
                         text: "Create Account",

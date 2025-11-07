@@ -118,7 +118,7 @@ class OnboardingPage extends StatelessWidget {
                     children: [
                       ElevatedButton(
                         onPressed: () {
-                          Get.toNamed(Routes.accountpage);
+                          Get.toNamed(Routes.rolepage);
                         },
                         style: buttonStyleone,
                         child: Text(

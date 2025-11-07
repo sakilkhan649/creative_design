@@ -6,19 +6,20 @@ import 'package:onboarding/Views/ChooseLocationScreen/Location_page.dart';
 import 'package:onboarding/Views/MainScreen/Mainpage.dart';
 import 'package:onboarding/Views/OnboardScreen/Onboarding_page.dart';
 import 'package:onboarding/Views/BottomNavthreeScreen/Profilepage.dart';
+import 'package:onboarding/Views/SignUpScreen/RolePage/Rolepage.dart';
 import 'package:onboarding/Views/SearchingRiderScreen/Rider_page.dart';
 import 'package:onboarding/Views/BottomNavthreeScreen/Searchpage.dart';
 import 'package:onboarding/Views/RiderScreen/SecondRider_page.dart';
 import 'package:onboarding/Views/SignInScreen/Singin_page.dart';
 import 'package:onboarding/Views/OnboardScreen/Splash_page.dart';
+import 'package:onboarding/Views/SignUpScreen/RolePage/UserAndRiderpage/RiderAccountpage.dart';
+import 'package:onboarding/Views/SignUpScreen/RolePage/UserAndRiderpage/UserAccountpage.dart';
 import 'package:onboarding/Views/SummeryScreen/Summery_page.dart';
 import 'package:onboarding/Views/ForgotPasswordScreen/Verify_page.dart';
 import 'package:onboarding/Views/ParcelDetailsScreen/parcel_page.dart';
 import '../../Controllers/BottomNavigationController/BottomController.dart';
 import '../../Views/BottomNavthreeScreen/Favoritepage.dart';
 import '../../Views/SignUpScreen/Account_verify.dart';
-import '../../Views/SignUpScreen/Accountpage.dart';
-
 
 final BottomNavController navController = Get.put(BottomNavController());
 
@@ -43,6 +44,9 @@ class Routes {
   static const String favoritepage = "/Favoritepage";
   static const String profilepage = "/Profilepage";
   static const String mainpage = "/Mainpage";
+  static const String useraccountpage = "/Useraccountpage";
+  static const String rideraccountpage = "/Rideraccountpage";
+  static const String rolepage = "/Rolepage";
 
   static List<GetPage> routes = [
     GetPage(name: ondoardingpage, page: () => OnboardingPage()),
@@ -58,13 +62,27 @@ class Routes {
     GetPage(name: summerypage, page: () => SummeryPage()),
     GetPage(name: riderpag, page: () => RiderPage()),
     GetPage(name: secondriderpage, page: () => SecondriderPage()),
-    GetPage(name: searchpage, page: () => Searchpage(index:currentIndex ,)),
-    GetPage(name: favoritepage, page: () => Favoritepage(index:currentIndex ,)),
-    GetPage(name: profilepage, page: () => Profilepage(index:currentIndex ,)),
+    GetPage(
+      name: searchpage,
+      page: () => Searchpage(index: currentIndex),
+    ),
+    GetPage(
+      name: favoritepage,
+      page: () => Favoritepage(index: currentIndex),
+    ),
+    GetPage(
+      name: profilepage,
+      page: () => Profilepage(index: currentIndex),
+    ),
     GetPage(name: mainpage, page: () => MainPage()),
     GetPage(
-      name: accountpage,
-      page: () => Accountpage(url: "https://www.google.com"),
+      name: useraccountpage,
+      page: () => Useraccountpage(url: "https://www.google.com"),
     ),
+    GetPage(
+      name: rideraccountpage,
+      page: () => Rideraccountpage(url: "https://www.google.com"),
+    ),
+    GetPage(name: rolepage, page: () => CustomTabbar()),
   ];
 }

@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:onboarding/Controllers/CheckController/CheckController.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../Controllers/PasswordController/passwoardController.dart';
-import '../../Core/AppRoutes/AppRoute.dart';
-import '../../Widgets/CustomButton.dart';
-import '../../Widgets/CustomText.dart';
-import '../../Widgets/CustomTextField.dart';
 
-class Accountpage extends StatelessWidget {
+import '../../../../Controllers/CheckController/CheckController.dart';
+import '../../../../Controllers/PasswordController/passwoardController.dart';
+import '../../../../Core/AppRoutes/AppRoute.dart';
+import '../../../../Widgets/CustomButton.dart';
+import '../../../../Widgets/CustomText.dart';
+import '../../../../Widgets/CustomTextField.dart';
+
+class Rideraccountpage extends StatelessWidget {
   final String url;
-  Accountpage({super.key, required this.url});
+  Rideraccountpage({super.key, required this.url});
 
   final CheckController controller = Get.put(CheckController());
 
@@ -42,138 +43,6 @@ class Accountpage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Align(
-                  alignment: Alignment.center,
-                  child: Column(
-                    children: [
-                      Customtext(
-                        text: "Create Your Account",
-                        color: Colors.green,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        maxlines: 1,
-                      ),
-                      SizedBox(height: 10),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 30),
-                        child: Customtext(
-                          text: "Join us to explore top Canadian-made",
-                          color: Colors.black87,
-                          fontSize: 12,
-                          fontWeight: FontWeight.normal,
-                          maxlines: 1,
-                          textline: TextAlign.center,
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 45),
-                        child: Customtext(
-                          text: "products, exclusive deals, and great rewards",
-                          color: Colors.black87,
-                          fontSize: 12,
-                          fontWeight: FontWeight.normal,
-                          maxlines: 1,
-                          textline: TextAlign.center,
-                        ),
-                      ),
-                      SizedBox(height: 13),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 30),
-                        child: Customtext(
-                          text: "Select your role",
-                          color: Colors.black87,
-                          fontSize: 16,
-                          fontWeight: FontWeight.normal,
-                          maxlines: 1,
-                          textline: TextAlign.center,
-                        ),
-                      ),
-                      SizedBox(height: 15),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 40),
-                        child: Obx(
-                          () => Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Expanded(
-                                child: GestureDetector(
-                                  onTap: () {
-                                    controller.userColor.value = 0;
-                                    controller.update();
-                                  },
-                                  child: Container(
-                                    alignment: Alignment.center,
-                                    height: 44,
-                                    width: double.maxFinite,
-                                    decoration: BoxDecoration(
-                                      color: controller.userColor == 0
-                                          ? Colors.green
-                                          : Colors.white,
-                                      border: Border.all(
-                                        color: Colors.black,
-                                        width: 1,
-                                      ),
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(8),
-                                      ),
-                                    ),
-                                    child: Text(
-                                      "User",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.normal,
-                                        fontSize: 14,
-                                        color: controller.userColor == 0
-                                            ? Colors.white
-                                            : Colors.black,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(width: 20),
-                              Expanded(
-                                child: GestureDetector(
-                                  onTap: () {
-                                    controller.userColor.value = 1;
-                                    controller.update();
-                                  },
-                                  child: Container(
-                                    alignment: Alignment.center,
-                                    height: 44,
-                                    width: double.maxFinite,
-                                    decoration: BoxDecoration(
-                                      color: controller.userColor == 1
-                                          ? Colors.green
-                                          : Colors.white,
-                                      border: Border.all(
-                                        color: Colors.black,
-                                        width: 1,
-                                      ),
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(8),
-                                      ),
-                                    ),
-                                    child: Text(
-                                      "Rider",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.normal,
-                                        fontSize: 14,
-                                        color: controller.userColor == 1
-                                            ? Colors.white
-                                            : Colors.black,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 23),
                 Customtext(
                   text: "Full Name",
                   color: Colors.black,
@@ -471,7 +340,9 @@ class Accountpage extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Get.toNamed(Routes.mainpage);
+                        if (_formkey.currentState!.validate()) {
+                          Get.toNamed(Routes.mainpage);
+                        }
                       },
                       child: Customtext(
                         text: "Sign in",
