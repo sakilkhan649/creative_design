@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:onboarding/Controllers/ApiController/ApiController.dart';
 import 'package:onboarding/Controllers/PasswordController/passwoardController.dart';
 import 'package:onboarding/Widgets/CustomButton.dart';
 import 'package:onboarding/Widgets/CustomText.dart';
@@ -18,9 +19,10 @@ class SigninPage extends StatelessWidget {
     await launchUrl(urle);
   }
 
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
+
   final controller = Get.put(PasswordController());
+
+  final apiController=Get.put(ApiController());
 
   //Global Variable..............
   final _formkey = GlobalKey<FormState>();
@@ -86,7 +88,7 @@ class SigninPage extends StatelessWidget {
                 ),
                 SizedBox(height: 5),
                 CustomTextField(
-                  controller: emailController,
+                  controller: apiController.emailController,
                   hintText: "Enter your email address",
                   color: Colors.black,
                   fontSize: 12,
@@ -125,6 +127,7 @@ class SigninPage extends StatelessWidget {
                     height: 48,
                     width: double.maxFinite,
                     child: TextFormField(
+                      controller: apiController.passwordController,
                       decoration: InputDecoration(
                         hintText: "Enter Password",
                         hintStyle: TextStyle(fontSize: 12, color: Colors.grey),
@@ -193,7 +196,8 @@ class SigninPage extends StatelessWidget {
                   textColor: Colors.white,
                   onPressed: () {
                     if (_formkey.currentState!.validate()) {
-                      Get.toNamed(Routes.mainpage);
+                      apiController.login();
+                      //Get.toNamed(Routes.mainpage);
                     }
 
                     // print("Email: ${emailController.text}");
